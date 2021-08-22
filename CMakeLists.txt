@@ -12,7 +12,17 @@ endif()
 
 enable_testing()
 
-add_executable(buildwatch_exec src/main.c)
+add_executable(buildwatch src/main.c)
 
-check_include_files("linux/ptrace.h" HAVE_LINUX_PTRACE_H)
 include(${CMAKE_SOURCE_DIR}/cmake/tools.cmake)
+
+check_include_files("getopt.h" HAVE_GETOPT_H)
+check_include_files("linux/ptrace.h" HAVE_LINUX_PTRACE_H)
+
+if(NOT HAVE_GETOPT_H)
+    message(FATAL_ERROR "dependency getopt not found")
+endif()
+if(NOT HAVE_LINUX_PTRACE_H)
+    message(FATAL_ERROR "dependency ptrace not found")
+endif()
+

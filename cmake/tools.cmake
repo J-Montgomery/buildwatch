@@ -1,4 +1,4 @@
-get_target_property(SOURCE_FILES buildwatch_exec SOURCES)
+get_target_property(SOURCE_FILES buildwatch SOURCES)
 
 find_program(CLANG_TIDY NAMES clang-tidy)
 if (CLANG_TIDY)
